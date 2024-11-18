@@ -1,37 +1,24 @@
-import java.util.Scanner
-
-fun binarySearch(arr: IntArray, target: Int): Int {
-    var left = 0
-    var right = arr.size - 1
-
-    while (left <= right) {
-        val mid = left + (right - left) / 2
-
-        when {
-            arr[mid] == target -> return mid // Found the target
-            arr[mid] < target -> left = mid + 1 // Search in the right half
-            else -> right = mid - 1 // Search in the left half
+fun selectionSort(array: IntArray) {
+    for (i in array.indices) {
+        // Find the smallest element in the remaining array
+        var minIndex = i
+        for (j in i + 1 until array.size) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j
+            }
         }
-    }
 
-    return -1 // Target not found
+        // Swap the smallest element with the current element
+        val temp = array[i]
+        array[i] = array[minIndex]
+        array[minIndex] = temp
+    }
 }
 
 fun main() {
-    val Scanner = Scanner(System.in)
+    val array = intArrayOf(5, 3, 8, 6, 2)
 
-    val arr = intArrayOf(10, 2, 30, 4, 50)
-    arr.sort() // Sorting the array before binary search
-    println("Sorted array: ${arr.joinToString(", ")}")
-
-    print("Enter the element to search: ")
-    val target = scanner.nextInt()
-
-    val result = binarySearch(arr, target)
-
-    if (result != -1) {
-        println("Element found at index $result")
-    } else {
-        println("Element not found")
-    }
+    println("Before sorting: ${array.joinToString(", ")}")
+    selectionSort(array)
+    println("After sorting: ${array.joinToString(", ")}")
 }
