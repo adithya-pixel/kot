@@ -17,8 +17,9 @@ fun binarySearch(arr: IntArray, target: Int): Int {
 
 fun main() {
     val arr = intArrayOf(10, 2, 30, 4, 50)
-    val target = 30
     arr.sort()
+    val target = 30
+    
     val result = binarySearch(arr, target)
     
     if (result != -1) {
